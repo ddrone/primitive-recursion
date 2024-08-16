@@ -124,8 +124,11 @@ function compile(root: ExprNode): Uint8Array {
               m.local.get(loopBound(loop), binaryen.i32))),
 
             m.local.set(vars.get(expr.iterVar), go(loop + 1, expr.iterBody)),
-            m.local.set(loopIndex(loop), m.i32.add(m.local.get(loopIndex(loop), binaryen.i32), m.i32.const(1)))
-          ]))
+            m.local.set(loopIndex(loop), m.i32.add(m.local.get(loopIndex(loop), binaryen.i32), m.i32.const(1))),
+            m.br(loopLabel),
+          ])),
+
+          m.local.get(vars.get(expr.iterVar), binaryen.i32)
         ]);
       }
     }
