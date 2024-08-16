@@ -27,5 +27,6 @@ export function run(root: ExprNode): number {
   const code = compile(root);
   const wasm = new WebAssembly.Module(code);
   const instance = new WebAssembly.Instance(wasm, {});
-  return instance.exports.main();
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  return (instance.exports.main as any)();
 }
