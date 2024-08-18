@@ -1,3 +1,6 @@
+Toplevel
+  = e:Expression _ { return e; }
+
 Expression
   = head:Term tail:(Plus Term)* {
       return tail.reduce(function(result, element) {
