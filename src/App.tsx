@@ -1,6 +1,6 @@
 import { ChangeEvent, useState } from 'react';
 import './App.css'
-import { add, constExpr, ExprNode, iter, varExpr } from './ast'
+import { add, constExpr, iter, varExpr } from './ast'
 import { run } from './compiler'
 import { parse } from './gen/parser';
 
